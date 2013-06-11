@@ -1,7 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <configuration>
     <restrictions execute-query="no">
-        <!-- disallow access to certain collections -->
-        <!--deny collection="/db/apps/dashboard"/-->
+        <!-- 
+            Disallow access to certain collections. When using this,
+            you always (!) want to deny access to the eXide collection as
+            well.
+        -->
+        <!--deny collection="/db/apps/eXide"/-->
     </restrictions>
 </configuration>

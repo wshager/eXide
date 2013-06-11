@@ -77,11 +77,21 @@ eXide.edit.XQueryUtils = (function () {
             var children = node.getParent.children;
             for (var i = 0; i < children.length; i++) {
                 if (children[i] == node) {
-                    for (var j = i; j < children.length; j++) {
+                    for (var j = i + 1; j < children.length; j++) {
                         if (children[j].name == type) {
                             return children[j];
                         }
                     }
+                }
+            }
+            return null;
+        },
+        
+        findChild: function(node, type) {
+            var children = node.children;
+            for (var i = 0; i < children.length; i++) {
+                if (children[i].name == type) {
+                    return children[i];
                 }
             }
             return null;
@@ -95,6 +105,17 @@ eXide.edit.XQueryUtils = (function () {
                 }
             }
             return null;
+        },
+        
+        findSiblings: function(node, type) {
+            var children = node.getParent.children;
+            var siblings = [];
+            for (var i = 0; i < children.length; i++) {
+                if (children[i] != node && children[i].name == type) {
+                    siblings.push(children[i]);
+                }
+            }
+            return siblings;
         },
         
         findAncestor: function(node, type) {
@@ -152,6 +173,16 @@ eXide.edit.XQueryUtils = (function () {
                 }
             }
             return null;
+        },
+        
+        getPath: function(node) {
+            var parts = [ node.name ];
+            node = node.getParent;
+            while (node) {
+                parts.push(node.name);
+                node = node.getParent;
+            }
+            return parts.reverse().join("/");
         }
     };
 }());
