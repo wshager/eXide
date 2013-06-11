@@ -46,7 +46,11 @@ declare function config:get-configuration() as element(configuration) {
 declare function config:access-allowed($path as xs:string, $user as xs:string) as xs:boolean {
     if (sm:is-dba($user)) then
         true()
+    else if($user eq "guest") then
+    	false()
     else
+    	matches($path,request:get-server-name())
+        (:
         let $deny := config:get-configuration()/restrictions/deny
         return
             if ($deny) then
@@ -56,6 +60,7 @@ declare function config:access-allowed($path as xs:string, $user as xs:string) a
                 )
             else
                 true()
+        :)
 };
 
 (:~

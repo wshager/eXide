@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <configuration>
-    <restrictions execute-query="yes">
+    <restrictions execute-query="no">
         <!-- disallow access to certain collections -->
         <!--deny collection="/db/apps/dashboard"/-->
     </restrictions>
