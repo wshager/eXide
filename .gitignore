@@ -1,5 +1,6 @@
 .DS_Store
 *.xar
+.project
 expath-pkg.xml
 index.html
 
