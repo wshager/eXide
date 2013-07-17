@@ -8,3 +8,5 @@ resources/scripts/xqlint.min.js
 tools/r.js
 
 tools/js.jar
+
+support/xqlint
